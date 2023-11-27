@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Animated Login Form</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 
 <body>
@@ -13,21 +13,67 @@
         <div class="signin">
             <div class="content">
                 <h2>Sign In</h2>
-                <div class="form">
+                <form class="form" id="loginForm">
                     <div class="inputBox">
-                        <input type="text" required> <i>Username</i>
+                        <input type="text" id="username" required> <i>Username</i>
                     </div>
                     <div class="inputBox">
-                        <input type="password" required> <i>Password</i>
+                        <input type="password" id="password" required> <i>Password</i>
                     </div>
-                    <div class="links"> <a href="#">Forgot Password</a> <a href="#">Signup</a>
+                    <div class="links"> <a href="#">Forgot Password</a> <button type="button" id="signupButton">Signup</button>
                     </div>
                     <div class="inputBox">
                         <input type="submit" value="Login">
                     </div>
-                </div>
+                </form>
             </div>
         </div>
+        <script>
+            document.getElementById('loginForm').addEventListener('submit', async (e) => {
+                e.preventDefault();
+                console.log('Form submitted');
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                try {
+                    const response = await fetch('/login', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, password })
+                    });
+                    const data = await response.text();
+                    if (response.ok) {
+                        window.location.href = 'search.html';
+                    } else {
+                        alert(data);
+                    }
+                } catch (error) {
+                    console.error('Login failed', error);
+                }
+            });
+
+        // Event listener for the signup action
+            document.getElementById('signupButton').addEventListener('click', async () => {
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+
+                try {
+                    const response = await fetch('/signup', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username, password })
+                    });
+                    const data = await response.text();
+                    if (response.ok) {
+                        alert('Signup successful. Please log in.'); // Notify user of successful signup
+                    } else {
+                        alert(data); // Show error if signup fails
+                    }
+                } catch (error) {
+                    console.error('Signup failed', error);
+                }
+            });    
+        </script>
     </section>
 </body>
 
