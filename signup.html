@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Dev & Dep Project</title>
+
+    <link rel="icon" type="png|image" href="">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    <!-- Include jQuery library -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+</head>
+<body>
+
+    <canvas id="matrixCanvas"></canvas>
+                                                        <!-- Matrix -->
+    <script src="matrix.js"></script>
+
+    <header>
+        
+    </header>
+
+    <section id="home" class="home">
+
+        <div class="home-content" data-scroll data-scroll-speed="-5" >
+            <div class="searchcrim">
+            <div class="content">
+                <h2>Create An Account</h2>
+
+                <form class="form" id="signupForm">
+                
+                    <!-- Input box for the email address -->
+                    <div class="inputBox">
+                        <input type="text" id="username" required>
+                        <i>Username</i>
+                    </div>
+                
+                    <!-- Input box for creating a password -->
+                    <div class="inputBox">
+                        <input type="password" id="password" required>
+                        <i>Create Password</i>
+                    </div>
+                
+                    <!-- Input box to confirm the password -->
+                    <div class="inputBox">
+                        <input type="password" id="confirmPassword" required>
+                        <i>Confirm Password</i>
+                    </div>
+                
+                    <!-- Input Box to initiate the account creation process -->
+                    <div class="inputBox">
+                        <input type="submit" value="Create Account">
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+
+    </section>
+    <script>
+        document.getElementById('signupForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            // Check if passwords match
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            try {
+                // Send a request to the server
+                const response = await fetch('/signup', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password })
+                });
+                const data = await response.text();
+                if (response.ok) {
+                    alert('Account created successfully. Please log in.');
+                    window.location.href = 'login.html';
+                } else {
+                    alert(data); // Show error message from server
+                }
+            } catch (error) {
+                console.error('Signup failed', error);
+                alert('An error occurred during signup.');
+            }
+        });
+    </script>
+
+</body> 
+</html> 

@@ -23,24 +23,30 @@
     </header>
 
     <section id="home" class="home">
-
-        <div class="home-content" data-scroll data-scroll-speed="-5" >
+    
+        <div class="home-content" data-scroll data-scroll-speed="-5">
             <div class="searchcrim">
-            <div class="content">
-                <h2>Search Criminal</h2>
-                <div class="form">
-                    <div class="inputBox">
-                        <input type="text" required> <i>Full Name</i>
-                    </div>
-                    <div class="inputBox">
-                        <input type="submit" value="Search">
+                <div class="content">
+                    <h2>Search Criminal</h2>
+                    <div class="form">
+                        <div class="inputBox">
+                            <input type="text" required> <i>Full Name</i>
+                        </div>
+                        <div class="inputBox">
+                            <input type="submit" value="Search">
+                        </div>
+                        <div class="inputBox">
+                            <input type="button" value="Account Settings" onclick="goToAccountSettings()">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
-
     </section>
-
+    <script>
+        function goToAccountSettings() {
+            window.location.href = 'account.html'; // Redirect to the account page
+        }
+    </script>
 </body> 
 </html> 

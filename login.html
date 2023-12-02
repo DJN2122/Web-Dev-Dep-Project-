@@ -20,7 +20,7 @@
                     <div class="inputBox">
                         <input type="password" id="password" required> <i>Password</i>
                     </div>
-                    <div class="links"> <a href="#">Forgot Password</a> <button type="button" id="signupButton">Signup</button>
+                    <div class="links"> <a href="#"></a> <a href="signup.html">Sign Up</a>
                     </div>
                     <div class="inputBox">
                         <input type="submit" value="Login">
@@ -51,28 +51,6 @@
                     console.error('Login failed', error);
                 }
             });
-
-        // Event listener for the signup action
-            document.getElementById('signupButton').addEventListener('click', async () => {
-                const username = document.getElementById('username').value;
-                const password = document.getElementById('password').value;
-
-                try {
-                    const response = await fetch('/signup', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ username, password })
-                    });
-                    const data = await response.text();
-                    if (response.ok) {
-                        alert('Signup successful. Please log in.'); // Notify user of successful signup
-                    } else {
-                        alert(data); // Show error if signup fails
-                    }
-                } catch (error) {
-                    console.error('Signup failed', error);
-                }
-            });    
         </script>
     </section>
 </body>
