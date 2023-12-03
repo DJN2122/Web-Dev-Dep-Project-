@@ -28,9 +28,9 @@
             <div class="searchcrim">
                 <div class="content">
                     <h2>Search Criminal</h2>
-                    <div class="form">
+                    <form class="form" id="searchForm">
                         <div class="inputBox">
-                            <input type="text" required> <i>Full Name</i>
+                            <input type="text" id="searchInput" required> <i>Full Name</i>
                         </div>
                         <div class="inputBox">
                             <input type="submit" value="Search">
@@ -38,11 +38,12 @@
                         <div class="inputBox">
                             <input type="button" value="Account Settings" onclick="goToAccountSettings()">
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
+    <script src="search.js"></script>
     <script>
         function goToAccountSettings() {
             window.location.href = 'account.html'; // Redirect to the account page

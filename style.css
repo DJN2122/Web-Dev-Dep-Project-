@@ -5,7 +5,7 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'GT America Extended', monospace;
-  }
+}
 
 body {
     background-color: black;
@@ -27,104 +27,17 @@ body {
     /* margin-left: -30px; */
 }
 
-.home-content h1 {
-    font-size: 56px;
-    font-weight: 700;
-    line-height: 1.2;
-    opacity: 0;
-    animation: slideRight 1s ease forwards;
-    animation-delay: .7s;
-}   
-
-.home-content h3 {
-    font-size: 32px;
-    font-weight: 700;
-    opacity: 0;
-    animation: slideLeft 1s ease forwards;
-    animation-delay: 1s;
-}
-
-.mu {
-    margin-top: 50px;
-}
-
-.home-content h1, h3 {
-    text-shadow: 5px 4px 10px green;
-}
-
-.home-content h3 span {
-    color: rgb(0, 255, 0);
-}
-
-.home-content p {
-    font-size: 16px;
-    margin: 20px 0 0;
-    text-align: left;
-    opacity: 0;
-    animation: slideLeft 1s ease forwards;
-    animation-delay: 1.3s;
-}
-
-.home-sci a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-    background: black;
-    border: 2px solid green;
-    border-radius: 50%;
-    font-size: 20px;
-    color: green;
-    text-decoration: none;
-    margin: 30px 15px 30px 0;
-    opacity: 0;
-    animation: zoomIn 1s ease forwards;
-    animation-delay: 0.4s;
-    
-}
-
-.home-sci a:hover {
-    background: green;
-    color: black;
-    box-shadow: 0 0 20px green;
-}
-
-.btn-box {
-    display: inline-block;
-    padding: 12px 28px;
-    background: green;
-    border-radius: 40px;
-    font-size: 16px;
-    color: black;
-    letter-spacing: 1px;
-    text-decoration: none;
-    font-weight: 600;
-    opacity: 0;
-    animation: zoomIn 1s ease forwards;
-    animation-delay: 0.4s;
-}
-
-.btn-box:hover {
-    box-shadow: 0 0 5px green,
-    0 0 25px green, 0 0 50px green,
-    0 0 100px green, 0 0 200px green;
-}
-
 canvas {
     position: fixed;
     top: auto;
     left: auto;
     background-color: black;
     z-index: -1;
-    background-size:cover;
+    background-size: cover;
     background-blend-mode: multiply;
     background-size: auto;
     scroll-behavior: smooth;
 }
-
-
-/* ---------------------------About----------------------- */
 
 /* Animation */
 @keyframes slideTop {
@@ -136,7 +49,7 @@ canvas {
     100% {
         opacity: 1;
         transform: translateY(0);
-    }    
+    }
 }
 
 @keyframes slideRight {
@@ -148,7 +61,7 @@ canvas {
     100% {
         opacity: 1;
         transform: translateX(0);
-    }    
+    }
 }
 
 @keyframes slideLeft {
@@ -160,7 +73,7 @@ canvas {
     100% {
         opacity: 1;
         transform: translateX(0);
-    }    
+    }
 }
 
 @keyframes zoomIn {
@@ -184,7 +97,7 @@ canvas {
         transform: translateY(-24px);
     }
 
-    100%{
+    100% {
         transform: translate(0);
     }
 }
@@ -193,7 +106,7 @@ canvas {
     0% {
         transform: rotate(0);
     }
-    
+
     100% {
         transform: rotate(360deg);
     }
@@ -201,12 +114,13 @@ canvas {
 
 @keyframes fadeIn {
     0% {
-      opacity: 0;
+        opacity: 0;
     }
+
     100% {
-      opacity: 1;
+        opacity: 1;
     }
-  }
+}
 
 .searchcrim {
     position: absolute;
@@ -222,8 +136,8 @@ canvas {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
- }
-  
+}
+
 .searchcrim .content {
     position: relative;
     width: 100%;
@@ -232,26 +146,26 @@ canvas {
     align-items: center;
     flex-direction: column;
     gap: 40px;
- }
-  
+}
+
 .searchcrim .content h2 {
     font-size: 2em;
     color: #0f0;
     text-transform: uppercase;
 }
-  
+
 .searchcrim .content .form {
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 25px;
 }
-  
+
 .searchcrim .content .form .inputBox {
     position: relative;
     width: 100%;
 }
-  
+
 .searchcrim .content .form .inputBox input {
     position: relative;
     width: 100%;
@@ -264,7 +178,7 @@ canvas {
     font-weight: 500;
     font-size: 1em;
 }
-  
+
 .searchcrim .content .form .inputBox i {
     position: absolute;
     left: 0;
@@ -274,31 +188,31 @@ canvas {
     transition: 0.5s;
     pointer-events: none;
 }
-  
+
 .searchcrim .content .form .inputBox input:focus~i,
 .searchcrim .content .form .inputBox input:valid~i {
     transform: translateY(-7.5px);
     font-size: 0.8em;
     color: #fff;
 }
-  
+
 .searchcrim .content .form .links {
     position: relative;
     width: 100%;
     display: flex;
     justify-content: space-between;
 }
-  
+
 .searchcrim .content .form .links a {
     color: #fff;
     text-decoration: none;
 }
-  
+
 .searchcrim .content .form .links a:nth-child(2) {
     color: #0f0;
     font-weight: 600;
 }
-  
+
 .searchcrim .content .form .inputBox input[type="submit"] {
     padding: 10px;
     background: #0f0;
@@ -312,17 +226,66 @@ canvas {
 input[type="submit"]:active {
     opacity: 0.6;
 }
-  
-  @media (max-width: 900px) {
+
+@media (max-width: 900px) {
     section span {
-      width: calc(10vw - 2px);
-      height: calc(10vw - 2px);
+        width: calc(10vw - 2px);
+        height: calc(10vw - 2px);
     }
 }
-  
-  @media (max-width: 600px) {
+
+@media (max-width: 600px) {
     section span {
-      width: calc(20vw - 2px);
-      height: calc(20vw - 2px);
+        width: calc(20vw - 2px);
+        height: calc(20vw - 2px);
     }
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.card {
+    width: 100%;
+    background: #222;
+    margin-bottom: 50px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 30px;
+}
+
+.button-container {
+    padding: 10px 10px;
+    /* Added padding */
+    position: fixed;
+    top: 10px;
+    left: 10px;
+}
+
+.search-again-button {
+    padding: 10px 10px;
+    /* Added padding */
+    background: #0f0;
+    color: #000;
+    font-weight: 600;
+    font-size: 1.35em;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+}
+
+.button-container button:active {
+    opacity: 0.6;
 }
