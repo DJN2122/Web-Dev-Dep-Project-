@@ -4,6 +4,7 @@ const cors = require('cors');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const User = require('./models/user');
+const Criminal = require('./models/criminal');
 const session = require('express-session');
 const MongoStore = require('connect-mongo');
 
@@ -146,4 +147,25 @@ app.post('/delete-account', async (req, res) => {
         console.error(error);
         res.status(500).send('An error occurred');
     }
+});
+
+app.get('/search-criminals', async (req, res) => {
+  const searchQuery = req.query.name;
+  if (!searchQuery) {
+    return res.status(400).send('Please provide a search term.');
+  }
+
+  try {
+    const regex = new RegExp(searchQuery, 'i'); // Case-insensitive regex for partial match
+    const criminals = await Criminal.find({ Name: regex }).limit(100);
+
+    if (criminals.length >= 100) {
+      return res.status(400).json({ message: 'Too many results, please specify a more detailed name.' });
+    } else {
+      res.json(criminals);
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).send('Error searching for criminals');
+  }
 });
