@@ -91,6 +91,7 @@ app.post('/signup', async (req, res) => {
   }
 });
 
+/*
 app.get('/account', (req, res) => {
   if (req.session.user) {
     // User is logged in, render the account page
@@ -100,6 +101,7 @@ app.get('/account', (req, res) => {
     res.redirect('/login.html');
   }
 });
+*/
 
 app.get('/api/user-info', (req, res) => {
   if (req.session.user) {
@@ -168,4 +170,18 @@ app.get('/search-criminals', async (req, res) => {
     console.error(error);
     res.status(500).send('Error searching for criminals');
   }
+});
+
+// Logout Endpoint
+app.get('/logout', (req, res) => {
+  req.session.destroy((err) => {
+    if (err) {
+      console.error(err);
+      res.status(500).send('Could not log out, try again');
+    } else {
+      // Clear the cookie here
+      res.clearCookie('connect.sid'); // The name 'connect.sid' may vary based on your session configuration
+      res.redirect('/login.html');
+    }
+  });
 });

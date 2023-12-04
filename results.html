@@ -49,6 +49,19 @@
             </div>
         </div>
     </section>
+    <script>
+        $.ajax({
+            type: "GET",
+            url: "/api/user-info",
+            success: function (response) {
+                // Assuming you have an element to display the username
+                $('#usernameDisplay').text("Hello! " + response.username);
+            },
+            error: function () {
+                window.location.href = '/login.html'; // Redirect to login if not authenticated
+            }
+        });
+    </script>
     <script src="displayResults.js"></script>
     <script>
         function searchDatabase() {
