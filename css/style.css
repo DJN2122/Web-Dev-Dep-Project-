@@ -246,13 +246,22 @@ body {
     padding: 0;
 }
 
+.button-container {
+    padding: 10px 10px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 100px;
+}
+
 .card-container {
     display: flex;
+    transform: none;
     flex-direction: column;
-    align-items: center;
     width: 100%;
-    padding: 30px;
+    padding: 70px;
     box-sizing: border-box;
+    align-items: center;
 }
 
 .card {
@@ -262,14 +271,6 @@ body {
     box-sizing: border-box;
     border-radius: 5px;
     padding: 30px;
-}
-
-.button-container {
-    padding: 10px 10px;
-    /* Added padding */
-    position: fixed;
-    top: 10px;
-    left: 10px;
 }
 
 .search-again-button {

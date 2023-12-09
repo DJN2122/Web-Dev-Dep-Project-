@@ -14,17 +14,11 @@
 
 </head>
 <body>
-
     <canvas id="matrixCanvas"></canvas>
                                                         <!-- Matrix -->
     <script src="../js/matrix.js"></script>
 
-    <header>
-        
-    </header>
-
     <section id="home" class="home">
-    
         <div class="home-content" data-scroll data-scroll-speed="-5">
             <div class="searchcrim">
                 <div class="content">
@@ -47,30 +41,6 @@
             </div>
         </div>
     </section>
-    <script>
-            $.ajax({
-                type: "GET",
-                url: "/api/user-info",
-                success: function (response) {
-                    // Assuming you have an element to display the username
-                    $('#usernameDisplay').text("Hello! " + response.username);
-                },
-                error: function () {
-                    window.location.href = '../pages/login.html'; // Redirect to login if not authenticated
-                }
-            });
-    </script>
     <script src="../js/search.js"></script>
-    <script>
-        function goToAccountSettings() {
-            window.location.href = '../pages/account.html'; // Redirect to the account page
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-                const logoutButton = document.getElementById('logOutButton');
-                logoutButton.addEventListener('click', () => {
-                    window.location.href = '/logout'; // This calls the logout endpoint on your server
-                });
-            });
-    </script>
 </body> 
 </html> 

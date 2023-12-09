@@ -1,4 +1,15 @@
-// search.js
+$.ajax({
+    type: "GET",
+    url: "/api/user-info",
+    success: function (response) {
+        // Assuming you have an element to display the username
+        $('#usernameDisplay').text("Hello! " + response.username);
+    },
+    error: function () {
+        window.location.href = '../pages/login.html'; // Redirect to login if not authenticated
+    }
+});
+
 document.addEventListener('DOMContentLoaded', function() {
     const searchForm = document.getElementById('searchForm');
     searchForm.addEventListener('submit', function(e) {
@@ -22,5 +33,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error('Error:', error);
                 alert('An error occurred while searching.');
             });
+    });
+});
+
+function goToAccountSettings() {
+    window.location.href = '../pages/account.html'; // Redirect to the account page
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    const logoutButton = document.getElementById('logOutButton');
+    logoutButton.addEventListener('click', () => {
+        window.location.href = '/logout'; // This calls the logout endpoint on your server
     });
 });
