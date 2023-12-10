@@ -12,28 +12,20 @@
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
 </head>
 <body>
-
     <canvas id="matrixCanvas"></canvas>
                                                         <!-- Matrix -->
     <script src="../js/matrix.js"></script>
 
-    <header>
-        
-    </header>
-
     <section id="home" class="home">
-
         <div class="home-content" data-scroll data-scroll-speed="-5" >
             <div class="searchcrim">
             <div class="content">
                 <h2>Create An Account</h2>
-
                 <form class="form" id="signupForm">
-                
-                    <!-- Input box for the email address -->
+
+                    <!-- Input box for the username -->
                     <div class="inputBox">
                         <input type="text" id="username" required>
                         <i>Username</i>
@@ -57,43 +49,9 @@
                     </div>
                 </form>
             </div>
+            </div>
         </div>
-        </div>
-
     </section>
-    <script>
-        document.getElementById('signupForm').addEventListener('submit', async (e) => {
-            e.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            // Check if passwords match
-            if (password !== confirmPassword) {
-                alert('Passwords do not match.');
-                return;
-            }
-
-            try {
-                // Send a request to the server
-                const response = await fetch('/signup', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password })
-                });
-                const data = await response.text();
-                if (response.ok) {
-                    alert('Account created successfully. Please log in.');
-                    window.location.href = '../pages/login.html';
-                } else {
-                    alert(data); // Show error message from server
-                }
-            } catch (error) {
-                console.error('Signup failed', error);
-                alert('An error occurred during signup.');
-            }
-        });
-    </script>
-
+    <script src="../js/signup.js"></script>
 </body> 
 </html> 

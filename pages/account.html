@@ -12,20 +12,13 @@
     <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
     <!-- Include jQuery library -->
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-
 </head>
 <body>
-
     <canvas id="matrixCanvas"></canvas>
                                                         <!-- Matrix -->
     <script src="../js/matrix.js"></script>
 
-    <header>
-        
-    </header>
-
     <section id="home" class="home">
-
         <div class="home-content" data-scroll data-scroll-speed="-5" >
             <div class="searchcrim">
             <div class="content">
@@ -41,25 +34,26 @@
                     <!-- Input box for the current password -->
                     <div class="inputBox">
                         <input type="password" id="currentPassword" required>
-                        <i>Current Password</i> <!-- Additional label for better user understanding -->
+                        <i>Current Password</i>
                     </div>
 
                     <!-- Input box for the new password -->
                     <div class="inputBox">
                         <input type="password" id="newPassword" required>
-                        <i>New Password</i> <!-- Additional label for better user understanding -->
+                        <i>New Password</i>
                     </div>
 
                     <!-- Input box to confirm the new password -->
                     <div class="inputBox">
                         <input type="password" id="confirmPassword" required>
-                        <i>Confirm New Password</i> <!-- Additional label for better user understanding -->
+                        <i>Confirm New Password</i>
                     </div>
 
                     <!-- Input Box to initiate the password change process -->
                     <div class="inputBox">
                         <input type="submit" value="Change Password">
                     </div>
+
                     <!-- Input Box to initiate the delete account process -->
                     <div class="inputBox">
                         <input type="submit" id="deleteAccountButton" value="Delete Account">
@@ -68,61 +62,7 @@
             </div>
         </div>
         </div>
-
     </section>
-    <script>
-        $(document).ready(function () {
-            $.ajax({
-                type: "GET",
-                url: "/api/user-info",
-                success: function (response) {
-                    // Assuming you have an element to display the username
-                    $('#usernameDisplay').text("Hello! " + response.username);
-                },
-                error: function () {
-                    window.location.href = 'login.html'; // Redirect to login if not authenticated
-                }
-            });
-        });
-
-        $('#changePasswordForm').submit(async (e) => {
-            e.preventDefault();
-            const currentPassword = $('#currentPassword').val();
-            const newPassword = $('#newPassword').val();
-            const confirmPassword = $('#confirmPassword').val();
-            if (newPassword !== confirmPassword) {
-                alert('New passwords do not match.');
-                return;
-            }
-            // Send change password request to the server
-            const response = await fetch('/change-password', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ currentPassword, newPassword })
-            });
-            const message = await response.text();
-            if (response.ok) {
-                alert('Password changed successfully. Please log in with your new password.');
-                window.location.href = '../pages/login.html'; // Redirect to the login page
-            } else {
-                alert(message); // Display error message if password change fails
-            }
-        });
-
-        // Event listener for deleting account
-        $('#deleteAccountButton').click(async () => {
-            if (confirm('Are you sure you want to delete your account? This cannot be undone.')) {
-                const response = await fetch('/delete-account', {
-                    method: 'POST'
-                });
-                const message = await response.text();
-                if (response.ok) {
-                    window.location.href = '../pages/login.html'; // Redirect to login page after account deletion
-                } else {
-                    alert(message);
-                }
-            }
-        });
-    </script>
+    <script src="../js/account.js"></script>
 </body> 
 </html> 
