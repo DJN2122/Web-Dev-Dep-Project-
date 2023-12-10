@@ -1,9 +1,15 @@
+# Web Development & Deployment - Pair Project
+
+## Team Members 
 | Name          |Student Num|
 |---------------|-----------|
 |Ivan Zenin     | C21406436 |
 |David Niculita | C20513979 |
 
-# Web Dev Project
+## What our webpage does. 
+
+Our project is a secure, encrypted webpage for accessing a criminal database. Users can create accounts, log in,
+and search for individuals by name to retrieve criminal records. Once logged in, users can update their account details and also have the option to delete their account for added privacy and security.
 
 ## Getting Started
 
@@ -28,3 +34,16 @@ to it with MongoDBCompass.
 7. The database should be set up and running now, open a new CMD and CD into the "js" folder in the repository
 and run node js server: "node server.js".
 8. Open a browser and enter the url: "http://localhost:3000/" (unless set otherwise)
+
+## Conclusion
+
+In conclusion we found this assignment very interesting yet challenging. It really allowed us to develop our front-end and back-end web development skills but also our creativity.
+
+This collaborative project involving a team of two has been a significant learning journey, offering valuable insights and enhancing our skills along the way. We worked together on campus and also virtually, this assignment also tested and improved our problem-solving and critical-thinking skills.
+
+We are glad to have been given the opportunity to work on a project like this, in conclusion we are happy how it turned out! 
+
+## Contributing
+Repository for Web Development & Deployment - Pair Project by David Niculita & Ivan Zenin
+
+[Our GitHub Repo.](https://github.com/DJN2122/Web-Dev-Dep-Project-)
