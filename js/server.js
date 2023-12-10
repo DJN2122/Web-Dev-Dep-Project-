@@ -12,15 +12,15 @@ const app = express();
 const port = process.env.PORT || 3000;
 const db = mongoose.connection;
 
+// Middleware
 app.use(session({
   secret: 'your_secret_key', // Secret key for signing the session ID cookie
   resave: false,
-  saveUninitialized: true,
-  store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/' }), // If using MongoDB
-  cookie: { secure: false, maxAge: 60000 } // Configure cookie settings
+  saveUninitialized: false,
+  store: MongoStore.create({ mongoUrl: 'mongodb://127.0.0.1:27017/' }), // Store session in MongoDB
+  cookie: { secure: false, maxAge: 300000 } // 5 Minutes
 }));
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../'))); // Serve static files from the 'public' folder
@@ -33,11 +33,8 @@ mongoose.connect('mongodb://127.0.0.1:27017/', {
   console.error('Could not connect to MongoDB', err);
 });
 
+// MongoDB error handling
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
-db.once('open', function() {
-  // we're connected!
-  console.log('Successfully connected to the database');
-});
 
 // Handle requests to the root path
 app.get('/', (req, res) => {
@@ -61,7 +58,6 @@ app.post('/login', async (req, res) => {
       req.session.user = {
         id: user._id,
         username: user.username
-        // Add other relevant user information, but avoid sensitive data
       };
 
       res.send('Login successful');
@@ -75,7 +71,7 @@ app.post('/login', async (req, res) => {
   }
 });
 
-// Sign Up
+// Sign Up Endpoint
 app.post('/signup', async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -89,18 +85,7 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-/*
-app.get('/account', (req, res) => {
-  if (req.session.user) {
-    // User is logged in, render the account page
-    res.sendFile(path.join(__dirname, '/account.html'));
-  } else {
-    // User is not logged in, redirect to login page
-    res.redirect('/login.html');
-  }
-});
-*/
-
+// Session Validation Endpoint
 app.get('/api/user-info', (req, res) => {
   if (req.session.user) {
     // Send back the user info
@@ -111,6 +96,7 @@ app.get('/api/user-info', (req, res) => {
   }
 });
 
+// Change Password Endpoint
 app.post('/change-password', async (req, res) => {
     if (!req.session.user) {
         return res.status(401).send('Not logged in');
@@ -134,6 +120,7 @@ app.post('/change-password', async (req, res) => {
     }
 });
 
+// Delete Account Endpoint
 app.post('/delete-account', async (req, res) => {
     if (!req.session.user) {
         return res.status(401).send('Not logged in');
@@ -149,6 +136,7 @@ app.post('/delete-account', async (req, res) => {
     }
 });
 
+// Search Criminal Endpoint
 app.get('/search-criminals', async (req, res) => {
   const searchQuery = req.query.name;
   if (!searchQuery) {
@@ -177,8 +165,8 @@ app.get('/logout', (req, res) => {
       console.error(err);
       res.status(500).send('Could not log out, try again');
     } else {
-      // Clear the cookie here
-      res.clearCookie('connect.sid'); // The name 'connect.sid' may vary based on your session configuration
+      // Clear the cookie
+      res.clearCookie('connect.sid');
       res.redirect('../pages/login.html');
     }
   });

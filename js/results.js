@@ -1,15 +1,16 @@
+// Session Validation
 $.ajax({
     type: "GET",
     url: "/api/user-info",
     success: function (response) {
-        // Assuming you have an element to display the username
-        $('#usernameDisplay').text("Hello! " + response.username);
+        // No action required on success
     },
     error: function () {
         window.location.href = '../pages/login.html'; // Redirect to login if not authenticated
     }
 });
 
+// Event Listener once name is searched
 document.addEventListener('DOMContentLoaded', function() {
     const resultsContainer = document.querySelector('.card-container');
     const results = JSON.parse(localStorage.getItem('searchResults'));
